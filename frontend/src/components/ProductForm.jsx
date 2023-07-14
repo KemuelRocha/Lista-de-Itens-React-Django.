@@ -13,24 +13,20 @@ const ProductForm = ({ onAdd }) => {
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
 
-  const handleAdd = () => {
+  const handleAdd = async () => {
     const newProduct = {
       name: name,
       description: description,
       price: parseFloat(price),
     };
 
-    axios.post('http://localhost:8000/api/products/', newProduct)
-      .then((response) => {
-        const addedProduct = response.data;
-        onAdd(addedProduct);
-        setName('');
-        setDescription('');
-        setPrice('');
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    const response = await axios.post('http://localhost:8000/api/products/', newProduct);
+
+    const addedProduct = response.data;
+    onAdd(addedProduct);
+    setName('');
+    setDescription('');
+    setPrice('');
   };
 
   return (
