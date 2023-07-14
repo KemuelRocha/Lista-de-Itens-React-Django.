@@ -1,13 +1,17 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography } from '@mui/material';
+import { AppBar, Toolbar, Typography, Box } from '@mui/material';
+import InventoryRoundedIcon from '@mui/icons-material/InventoryRounded';
 
 const Navbar = () => {
   return (
-    <AppBar position="static">
+    <AppBar position="fixed">
       <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          Lista de Produtos
-        </Typography>
+        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <InventoryRoundedIcon />
+          <Typography variant="h5" component="div" sx={{ flexGrow: 0 }}>
+            Lista de Produtos
+          </Typography>
+        </Box>
       </Toolbar>
     </AppBar>
   );

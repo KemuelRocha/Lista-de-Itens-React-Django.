@@ -27,6 +27,8 @@ const ProductForm = ({ onAdd }) => {
     setName('');
     setDescription('');
     setPrice('');
+
+    window.location.reload(); // Atualiza a página
   };
 
   return (

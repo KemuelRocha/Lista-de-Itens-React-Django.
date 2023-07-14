@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container } from '@mui/material';
+import { Container, Grid, ThemeProvider, createTheme, CssBaseline } from '@mui/material';
 import Navbar from './components/Navbar';
 import ProductList from './components/ProductList';
 import ProductForm from './components/ProductForm';
@@ -35,14 +35,32 @@ const App = () => {
       });
   };
 
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#1976d2', // Cor primária
+      },
+      background: {
+        default: '#f5f5f5', // Cor de fundo da página
+      },
+    },
+  });
+
   return (
-    <div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       <Navbar />
-      <Container maxWidth="sm" style={{ marginTop: '2rem' }}>
-        <ProductForm onAdd={handleAddProduct} />
-        <ProductList products={products} onDelete={handleDeleteProduct} />
+      <Container maxWidth="md" sx={{ marginTop: '5rem', padding: '2rem', borderRadius: '8px', boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)' }}>
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={5} sx={{ width: '40%' }}>
+            <ProductForm onAdd={handleAddProduct} />
+          </Grid>
+          <Grid item xs={12} md={7} sx={{ width: '60%' }}>
+            <ProductList products={products} onDelete={handleDeleteProduct} />
+          </Grid>
+        </Grid>
       </Container>
-    </div>
+    </ThemeProvider>
   );
 };
 

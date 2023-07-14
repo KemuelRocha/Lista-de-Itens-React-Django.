@@ -22,12 +22,12 @@ const ProductItem = ({ product, onDelete }) => {
           {product.description}
         </Typography>
         <Typography variant="body1" color="text.primary" gutterBottom>
-          Price: {product.price}
+          Preço: {product.price}
         </Typography>
       </CardContent>
       <CardActions>
         <Button variant="contained" color="error" onClick={handleDelete}>
-          Delete
+          Deletar
         </Button>
       </CardActions>
     </Card>
